@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Ball : MonoBehaviour
 {
     Rigidbody2D playerRb;
     public Vector2 startVelocity = new Vector2(10.0f, 10.0f);
