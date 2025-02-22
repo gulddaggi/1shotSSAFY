@@ -5,20 +5,24 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody playerRb;
+    Rigidbody2D playerRb;
+    public Vector2 startVelocity = new Vector2(10.0f, 10.0f);
+    public Vector2 velocity;
     Vector3 fireVector;
 
     public GameObject inputDegreeText;
 
     void Start()
     {
-        fireVector = Vector3.right;
-        playerRb = gameObject.GetComponent<Rigidbody>();
+        // fireVector = Vector3.right;
+        playerRb = gameObject.GetComponent<Rigidbody2D>();
+        playerRb.velocity = startVelocity;
     }
 
     void Update()
     {
-        Debug.DrawLine(gameObject.transform.position, fireVector, Color.red);
+        velocity = playerRb.velocity;
+        // Debug.DrawLine(gameObject.transform.position, fireVector, Color.red);
     }
 
     public void shot()
