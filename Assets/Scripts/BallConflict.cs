@@ -65,13 +65,13 @@ public class BallConflict : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            Rigidbody2D ballRb = gameObject.GetComponent<Rigidbody2D>();
-            Rigidbody2D ballPlayerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D crashedBallRb = gameObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D crashingBallPlayerRb = collision.gameObject.GetComponent<Rigidbody2D>();
 
             Vector2 v1 = gameObject.GetComponent<Ball>().velocity;
             Vector2 v2 = collision.gameObject.GetComponent<Ball>().velocity;
 
-            (ballRb.velocity, ballPlayerRb.velocity) = calculateBall2BallCollision(v1, v2, ballRb.position, ballPlayerRb.position);
+            (crashedBallRb.velocity, crashingBallPlayerRb.velocity) = calculateBall2BallCollision(v1, v2, crashedBallRb.position, crashingBallPlayerRb.position);
         }
     }
 
