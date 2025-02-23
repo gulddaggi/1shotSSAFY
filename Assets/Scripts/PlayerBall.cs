@@ -12,6 +12,7 @@ public class PlayerBall : Ball
     Vector3 fireVector;
     Vector3 towordVector;
     public GameObject inputDegreeText;
+    public GameObject inputPowerText;
 
     protected override void Start()
     {
@@ -37,18 +38,27 @@ public class PlayerBall : Ball
 
     public void shot()
     {
-        playerRb.velocity = fireVelocity * power;
+        rb.velocity = fireVelocity * power;
     }
 
     public void SetDegree()
     {
-        float degree = int.Parse(inputDegreeText.GetComponent<InputField>().text);
+        float degree = float.Parse(inputDegreeText.GetComponent<InputField>().text);
         fireVelocity = Quaternion.AngleAxis(degree, Vector3.forward).normalized * fireVelocity;
     }
 
     public void SetPower()
     {
-        float power = int.Parse(inputDegreeText.GetComponent<InputField>().text);
+        float power = float.Parse(inputPowerText.GetComponent<InputField>().text);
         this.power = power;
+    }
+
+    public override void InPocket()
+    {
+        base.InPocket();
+        power = 10f;
+        fireVelocity = new Vector2(1.0f, 0.0f);
+
+        gameManager.Respawn(ballIdx);
     }
 }
